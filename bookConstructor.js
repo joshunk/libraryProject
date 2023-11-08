@@ -32,3 +32,12 @@ const blackPrism = new Book("The Black Prism", "Brent Weeks", "640", "read");
 const reaperMan = new Book("Reaper Man", "Terry Pratchett", "384", "read");
 
 function addBookToLibrary() {}
+
+function printBook(book) {
+	console.log(book.title, book.author, book.pages, book.readStatus);
+}
+
+function pushTitleTest(title) {
+	const bTitle = document.getElementById("bookTitle");
+	bTitle.innerText = title;
+}
