@@ -45,9 +45,40 @@ function pushTitleTest(title) {
 const submitButton = document.querySelector(".submitButton");
 const bookInputForm = document.querySelector(".bookInputForm");
 const addBook = document.querySelector(".addBook");
+const unhideElement = () => (bookInputForm.style.visibility = "visible");
+const hideElement = () => (bookInputForm.style.visibility = "hidden");
 
-// I can't remember what I'm doing wrong for adding stuff to the DOM. I'll figure it out.
-addBook.addEventListener(
-	"click",
-	() => (bookInputForm.style.visibility = "visible")
-);
+const newTitle = document.getElementById("newTitle");
+const newAuthor = document.getElementById("newAuthor");
+const newPages = document.getElementById("newPages");
+const newReadStatus = document.getElementById("newReadStatus");
+
+// Hide and un-hide the form
+addBook.addEventListener("click", unhideElement);
+
+// Pull the info from the form, use the constructor to build book, and push it to the myLibrary array
+function bookBuilder() {
+	console.log("Moo");
+	myLibrary.push(
+		new Book(
+			newTitle.value,
+			newAuthor.value,
+			newPages.value,
+			newReadStatus.value
+		)
+	);
+	console.log(myLibrary);
+	hideElement();
+}
+
+submitButton.addEventListener("click", () => {
+	bookBuilder();
+});
+// Arrow function breakdown because I'm rusty
+// const myArrowFunction = () => {
+// 	console.log("This is the first statement");
+// 	console.log("This is the second statement");
+// 	// Add more statements or function calls as needed
+//   };
+
+//Write a function that loops through an array of books and displays them on the page

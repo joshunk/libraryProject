@@ -22,7 +22,8 @@ p {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	visibility: hidden;
+	/* Turn off while debugging form */
+	/* visibility: hidden; */
 }
 
 .bookForm > div > input {
