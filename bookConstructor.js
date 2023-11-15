@@ -41,3 +41,13 @@ function pushTitleTest(title) {
 	const bTitle = document.getElementById("bookTitle");
 	bTitle.innerText = title;
 }
+
+const submitButton = document.querySelector(".submitButton");
+const bookInputForm = document.querySelector(".bookInputForm");
+const addBook = document.querySelector(".addBook");
+
+// I can't remember what I'm doing wrong for adding stuff to the DOM. I'll figure it out.
+addBook.addEventListener(
+	"click",
+	() => (bookInputForm.style.visibility = "visible")
+);

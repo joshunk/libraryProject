@@ -13,3 +13,30 @@ p {
 	padding: 2rem;
 	text-align: center;
 }
+
+.bookInputForm {
+	background-color: cornflowerblue;
+	width: 18rem;
+	height: 15rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	visibility: hidden;
+}
+
+.bookForm > div > input {
+	border: none;
+	display: block;
+	margin-bottom: 0.5rem;
+	border: 1px gray solid;
+}
+
+.bookForm {
+	background-color: brown;
+	display: flex;
+	width: 18rem;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
