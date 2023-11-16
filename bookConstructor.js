@@ -48,6 +48,8 @@ const addBook = document.querySelector(".addBook");
 const unhideElement = () => (bookInputForm.style.visibility = "visible");
 const hideElement = () => (bookInputForm.style.visibility = "hidden");
 
+const bookShelf = document.querySelector(".bookShelf");
+
 const newTitle = document.getElementById("newTitle");
 const newAuthor = document.getElementById("newAuthor");
 const newPages = document.getElementById("newPages");
@@ -68,11 +70,12 @@ function bookBuilder() {
 		)
 	);
 	console.log(myLibrary);
-	hideElement();
 }
 
 submitButton.addEventListener("click", () => {
 	bookBuilder();
+	bookPusher();
+	hideElement();
 });
 // Arrow function breakdown because I'm rusty
 // const myArrowFunction = () => {
@@ -82,3 +85,33 @@ submitButton.addEventListener("click", () => {
 //   };
 
 //Write a function that loops through an array of books and displays them on the page
+
+let newDiv = document.createElement("div");
+// newDiv.id = book.Title;
+
+function bookPusher() {
+	let x = 0;
+	myLibrary.forEach((book) => {
+		let newDiv = document.createElement("div");
+		let newTitle = document.createElement("p");
+		let newAuthor = document.createElement("p");
+		let newPages = document.createElement("p");
+		let newRead = document.createElement("p");
+		let deleteButton = document.createElement("button");
+
+		newDiv.id = x + 1;
+		newTitle.innerText = book.title;
+		newAuthor.innerText = book.author;
+		newPages.innerText = book.pages;
+		newRead.innerText = book.readStatus;
+		// Write a function that deletes the book based on bookID? Div ID? Not sure yet.
+		deleteButton.id = "book" + x + 1;
+		deleteButton.innerText = "Delete Book";
+
+		newDiv.append(newTitle, newAuthor, newPages, newRead, deleteButton);
+		bookShelf.append(newDiv);
+	});
+	console.log(myLibrary);
+}
+
+bookPusher();

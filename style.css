@@ -23,7 +23,7 @@ p {
 	align-items: center;
 	justify-content: space-evenly;
 	/* Turn off while debugging form */
-	/* visibility: hidden; */
+	visibility: hidden;
 }
 
 .bookForm > div > input {
