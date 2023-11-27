@@ -61,6 +61,7 @@ addBook.addEventListener("click", unhideElement);
 // Pull the info from the form, use the constructor to build book, and push it to the myLibrary array
 function bookBuilder() {
 	console.log("Moo");
+	bookShelf.innerHTML = "";
 	myLibrary.push(
 		new Book(
 			newTitle.value,
@@ -98,20 +99,43 @@ function bookPusher() {
 		let newPages = document.createElement("p");
 		let newRead = document.createElement("p");
 		let deleteButton = document.createElement("button");
-
-		newDiv.id = x + 1;
+		deleteButton.addEventListener("click", function () {
+			let bookIndex = myLibrary.indexOf(book.title);
+			console.log(`The index of ${book.title} is ${bookIndex}`);
+			deleteBook(newDiv.id, bookIndex);
+		});
+		x++;
 		newTitle.innerText = book.title;
 		newAuthor.innerText = book.author;
 		newPages.innerText = book.pages;
 		newRead.innerText = book.readStatus;
 		// Write a function that deletes the book based on bookID? Div ID? Not sure yet.
-		deleteButton.id = "book" + x + 1;
+		newDiv.id = "book" + x;
 		deleteButton.innerText = "Delete Book";
 
 		newDiv.append(newTitle, newAuthor, newPages, newRead, deleteButton);
 		bookShelf.append(newDiv);
+		resetBookForm();
 	});
 	console.log(myLibrary);
 }
+//idk why this is here so I'm commenting it out until I know
+// bookPusher();
 
-bookPusher();
+//Reset the values of the book form to blank
+function resetBookForm() {
+	newTitle.value = "";
+	newAuthor.value = "";
+	newPages.value = "";
+	newReadStatus.value = "";
+}
+
+//Function for the remove book button
+function deleteBook(bookID, bookIndex) {
+	//use Div ID to remove from object library
+	myLibrary.splice(bookIndex, 1);
+
+	//remove from DOM
+	let x = document.getElementById(bookID);
+	x.remove();
+}
